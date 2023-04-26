@@ -1,9 +1,14 @@
 <h1>Search results for "{{query}}"</h1>
 
-<ul>
 {{#each this.items}}
 <h3>{{name}}</h3>
 <img src={{images.0.url}} alt="{{name}}">
-<a href="/albums/{{id}}">Show albums</a>
+{{!-- <a href="/albums/{{id}}">Show albums</a> --}}
+
+
+<form action action=" /ablums{{id}}"method="get"> 
+  <button type="submit">View Albums</button>
+</form>
+
 {{/each}}
-</ul>
+

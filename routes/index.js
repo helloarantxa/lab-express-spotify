@@ -37,4 +37,28 @@ router.get("/artist-search", function (req, res, next) {
     );
 });
 
+router.get("/albums/:id", (req, res, next) => {
+  spotifyApi
+    .getArtistAblums(req.params.id)
+    .then((results) => {
+      console.log("these are albums", results);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+router.get("/albumTracks/:id", (req, res, next) => {
+  spotifyApi
+  .getAlbumTracks(req.params.id)
+  .then((results) => {
+    console.log ("these are TRACKS ", results.body)
+    let tracks = results.body.items
+    res.render('tracks.hbs', {tracks})
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+});
+
 module.exports = router;
